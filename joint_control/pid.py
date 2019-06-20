@@ -57,7 +57,7 @@ class PIDController(object):
         prediction = (sensor - self.y[0]) / len(self.y) + sensor
         self.y.append(sensor)
 
-        self.e1 = self.e1 - sensor # don't rely on the predicted error, take the measured error. (e1 stores old target values)
+        self.e1 = self.e1 - sensor 
 
         e0 = target - prediction
         self.u = self.u + (self.Kp + self.Ki * self.dt + self.Kd / self.dt) * e0 - (self.Kp + 2 * self.Kd / self.dt) * self.e1 + (self.Kd / self.dt) * self.e2
