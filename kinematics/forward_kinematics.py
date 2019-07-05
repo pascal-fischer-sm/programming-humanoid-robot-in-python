@@ -24,7 +24,6 @@ from numpy.matlib import matrix, identity, array, dot
 from math import sin, cos
 from angle_interpolation import AngleInterpolationAgent
 
-
 class ForwardKinematicsAgent(AngleInterpolationAgent):
     def __init__(self, simspark_ip='localhost',
                  simspark_port=3100,
@@ -112,8 +111,8 @@ class ForwardKinematicsAgent(AngleInterpolationAgent):
                       ,[ 0, 0, 1, 0]
                       ,[ 0, 0, 0, 1]])
 
-        T[3, 0:3] = self.joint_length[joint_name]
-
+        T[0:3, 3] = self.joint_length[joint_name]
+        
         return T
 
     def forward_kinematics(self, joints):
